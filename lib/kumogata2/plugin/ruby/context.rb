@@ -8,10 +8,7 @@ class Kumogata2::Plugin::Ruby::Context
   def template(&block)
     key_converter = proc do |key|
       key = key.to_s
-      unless @options.skip_replace_underscore?
-        key.gsub!('__', '::')
-        key.gsub!('_', ':')
-      end
+      key.gsub!('__', '::') unless @options.skip_replace_underscore?
       key
     end
 
